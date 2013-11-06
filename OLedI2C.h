@@ -20,6 +20,7 @@ public:
 		void init();
 		void sendCommand(unsigned char command);
 		void sendString(const char *String, uint8_t col, uint8_t row);
+		void sendFloat(float digit, uint8_t dec, uint8_t nad, uint8_t col, uint8_t row);
 		void sendData(unsigned char data);
 		void clearLcd();
 		void cursPos(uint8_t, uint8_t); // cloumn, row
