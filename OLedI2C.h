@@ -6,6 +6,7 @@
 	Phil Grant Sept 2013
 	www.gadjet.co.uk
 	Scrolling contributed by Nathan Chantrell http://nathan.chantrell.net/
+	Updated 06/11/2013 to include the cursPos data within the sendString function.
 */
 #ifndef OLedI2C_h
 #define OLedI2C_h	
@@ -18,7 +19,7 @@ public:
 		~OLedI2C();
 		void init();
 		void sendCommand(unsigned char command);
-		void sendString(const char *String);
+		void sendString(const char *String, uint8_t col, uint8_t row);
 		void sendData(unsigned char data);
 		void clearLcd();
 		void cursPos(uint8_t, uint8_t); // cloumn, row
