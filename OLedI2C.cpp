@@ -95,6 +95,13 @@ sendCommand(0x01);
     Wire.endTransmission();                 	 // **** End I2C 
       delay(10);
 }
+void OLedI2C::sendFloat(float digit, uint8_t dec, uint8_t nad, uint8_t col, uint8_t row)
+{
+char line[10];//Ten characters, I hope that's enough
+dtostrf(digit,dec,nad,line);//Convert the float value to a string
+sendString(line, col, row);
+
+}
 void OLedI2C::sendString(const char *String, uint8_t col, uint8_t row)
 {
   cursPos(col, row);
