@@ -22,3 +22,5 @@ clearLcd	    KEYWORD2
 cursPos		    KEYWORD2
 
 scrollString	KEYWORD2 Writen by Nathan Chantrell http://nathan.chantrell.net
+
+Updated sendString to include cursPos data. sendString("String", col, row)
