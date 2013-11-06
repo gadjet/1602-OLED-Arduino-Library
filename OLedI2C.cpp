@@ -7,6 +7,9 @@ Feedback welcome, visit www.gadjet.co.uk
 Phil Grant 2013
 Scrolling contributed by Nathan Chantrell http://nathan.chantrell.net/
 
+Updated 06/11/2013 to include the cursPos data in the sendString function
+sendString("string", col, row)
+
 */
 #include "OLedI2C.h" 
 #include "Wire.h"
@@ -92,8 +95,9 @@ sendCommand(0x01);
     Wire.endTransmission();                 	 // **** End I2C 
       delay(10);
 }
-void OLedI2C::sendString(const char *String)
+void OLedI2C::sendString(const char *String, uint8_t col, uint8_t row)
 {
+  cursPos(col, row);
   unsigned char i=0;
   while(String[i])
   {
@@ -120,8 +124,8 @@ void OLedI2C::scrollString(char* message, byte row, unsigned int time)//written 
    else buffer[j]=message[pos-16];
    pos++;
   }
-  cursPos(0,row);
- sendString(buffer);
+ //cursPos(0,row); removed by PG
+ sendString(buffer, 0, row); //Edited by PG tho include the cursor pos within the sendString command
  delay(time);
  }
 }
