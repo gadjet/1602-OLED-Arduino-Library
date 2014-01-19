@@ -87,6 +87,16 @@ void OLedI2C::clearLcd()
 sendCommand(0x01);
 }
 
+void OLedI2C::lcdOff()
+{
+sendCommand(0x08);  	// **** Turn on Off
+}
+
+void OLedI2C::lcdOn()
+{
+sendCommand(0x0C);  	// **** Turn on On
+}
+
  void OLedI2C::sendCommand(unsigned char command)
 {
     Wire.beginTransmission(OLED_Address); 	 // **** Start I2C 
@@ -102,6 +112,20 @@ dtostrf(digit,dec,nad,line);//Convert the float value to a string
 sendString(line, col, row);
 
 }
+
+ void OLedI2C::setContrast(unsigned char contrast) // contrast as 0x00 to 0xFF
+{
+     //Set OLED Command set
+	sendCommand(0x2A); 
+	sendCommand(0x79); 
+	
+	sendCommand(0x81);  	// Set Contrast
+	sendCommand(contrast);	// send contrast value
+	sendCommand(0x78);  	// Exiting Set OLED Command set
+   sendCommand(0x28);
+	
+}
+
 void OLedI2C::sendString(const char *String, uint8_t col, uint8_t row)
 {
   cursPos(col, row);
