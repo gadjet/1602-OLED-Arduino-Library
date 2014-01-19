@@ -25,5 +25,8 @@ public:
 		void clearLcd();
 		void cursPos(uint8_t, uint8_t); // cloumn, row
 		void scrollString(char* message, byte row, unsigned int time); //written by Nathan Chantrell http://nathan.chantrell.net/
+		void lcdOff();
+		void lcdOn();
+		void setContrast(unsigned char contrast); // contrast should be the hex value between 0x00 and 0xFF
 };
 #endif
